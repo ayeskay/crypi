@@ -1,7 +1,9 @@
+--index-url https://download.pytorch.org/whl/cpu
+
 fastapi
 uvicorn
 pydantic
 transformers
-torch --index-url https://download.pytorch.org/whl/cpu
+torch
 sentencepiece
 huggingface-hub
