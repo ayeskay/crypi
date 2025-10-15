@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypi - AI Code Security Scanner</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="container">
+        <h1>Crypi 🤖</h1>
+        <p>Enter a Java code snippet below and let Crypi check for potential vulnerabilities.</p>
+        <textarea id="codeInput" placeholder="Paste your code snippet here..."></textarea>
+        <button id="checkButton">Check Security</button>
+        <div id="resultContainer" class="hidden">
+            <div id="loader" class="loader hidden"></div>
+            <div id="resultContent">
+                <h2>Result: <span id="predictionText"></span></h2>
+                <div class="probabilities">
+                    <p><strong>Confidence Score:</strong> <span id="confidenceScore"></span>%</p>
+                    <div class="progress-bar-container">
+                        <div id="secureBar" class="progress-bar secure"></div>
+                        <div id="vulnBar" class="progress-bar vulnerable"></div>
+                    </div>
+                    <div class="labels">
+                        <span id="secureLabel"></span>
+                        <span id="vulnLabel"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
