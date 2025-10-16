@@ -6,7 +6,7 @@ from transformers import AutoTokenizer, AutoModelForSequenceClassification
 # --- 1. Setup & Model Loading ---
 DEVICE = torch.device('cpu')
 # !!! IMPORTANT: This MUST match your Hugging Face username and repo name !!!
-MODEL_REPO = 'ayeskay/crypi-code-security-model' 
+MODEL_REPO = 'ayeskay/crypi' 
 
 # Load the trained model and tokenizer FROM THE HUB
 # Vercel will download this automatically when the server starts.
