@@ -13,20 +13,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     checkButton.addEventListener('click', async () => {
         const snippet = codeInput.value.trim();
-        if (!snippet) { alert('Please enter a code snippet.'); return; }
+        if (!snippet) {
+            alert('Please enter a code snippet.');
+            return;
+        }
+
         resultContainer.classList.remove('hidden');
         resultContent.classList.add('hidden');
         loader.classList.remove('hidden');
+
         try {
-            const response = await fetch('/predict', {
+            const response = await fetch('http://127.0.0.1:8000/predict', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ text: snippet }),
             });
+
             if (!response.ok) throw new Error(`API Error: ${response.statusText}`);
+
             const data = await response.json();
             displayResults(data);
         } catch (error) {
+            console.error('❌ Error:', error);
             displayError(error.message);
         } finally {
             loader.classList.add('hidden');
@@ -39,11 +47,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const secureProb = probabilities.secure * 100;
         const vulnProb = probabilities.vulnerable * 100;
         const confidence = Math.max(secureProb, vulnProb);
+
         predictionText.textContent = prediction;
         predictionText.className = prediction.toLowerCase();
+
         confidenceScore.textContent = confidence.toFixed(2);
+
         secureBar.style.width = `${secureProb}%`;
         vulnBar.style.width = `${vulnProb}%`;
+
         secureLabel.textContent = `Secure: ${secureProb.toFixed(2)}%`;
         vulnLabel.textContent = `Vulnerable: ${vulnProb.toFixed(2)}%`;
     }
